@@ -16,7 +16,7 @@ const suggestBtns = document.querySelectorAll(".suggest-btn"); // Add this class
 
 // errorBord
 const errorBord = document.getElementById("errorBord"); // Add this class to all buttons
-
+// console.log(errorBord)
 
 suggestBtns.forEach((btn) => {
     // console.log(btn)
@@ -32,8 +32,13 @@ search.addEventListener("click", function () {
     getGitHubProfile(username).then(result => {
         
         const userObj = result.profile;
-        console.log(result.success)
-        createCart(userObj.name, userObj.avatar, userObj.username, userObj.bio, userObj.profileUrl, userObj.publicRepos, userObj.followers, userObj.following, userObj.accountType, result.message)
+        // console.log(result.success)
+        if (result.success) {
+            createCart(userObj.name, userObj.avatar, userObj.username, userObj.bio, userObj.profileUrl, userObj.publicRepos, userObj.followers, userObj.following, userObj.accountType, result.message)
+            errorBord.className = "hidden"
+        } else {
+            errorBord.className = "block"
+        }
     });
     // console.log(input.value)
     input.value = " "
@@ -42,7 +47,7 @@ search.addEventListener("click", function () {
 
 function createCart(name, imgUrl, username, bio, profileUrl, publicRepos, followers, following, accountType, message) {
 
-    
+     cartContainer.innerHTML = "";
     
     const div1 = document.createElement("div");
     div1.className = "bg-gray-500 w-[95%] md:w-[28%] md:px-4 rounded-2xl flex flex-col items-center mt-2 justify-center";
