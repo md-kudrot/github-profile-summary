@@ -38,6 +38,7 @@ search.addEventListener("click", function () {
             errorBord.className = "hidden"
         } else {
             errorBord.className = "block"
+            cartContainer.innerHTML = "";
         }
     });
     // console.log(input.value)
