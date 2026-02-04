@@ -7,20 +7,43 @@ const search = document.getElementById("search");
 const cartContainer = document.getElementById("cartContainer")
 // console.dir(cartContainer)
 
+// suggesBord
+const suggesBord = document.getElementById("suggesBord")
+// console.log(suggesBord)
+
+//  suggestion buttons 
+const suggestBtns = document.querySelectorAll(".suggest-btn"); // Add this class to all buttons
+
+// errorBord
+const errorBord = document.getElementById("errorBord"); // Add this class to all buttons
+
+
+suggestBtns.forEach((btn) => {
+    // console.log(btn)
+    btn.addEventListener("click", () => {
+        input.value = btn.innerText;
+        suggesBord.innerHTML = ''
+    })
+})
+
 search.addEventListener("click", function () {
     let username = input.value;
+    console.log(username)
     getGitHubProfile(username).then(result => {
-        console.log(result)
-        console.log(result.profile.name)
+        
         const userObj = result.profile;
+        console.log(result.success)
         createCart(userObj.name, userObj.avatar, userObj.username, userObj.bio, userObj.profileUrl, userObj.publicRepos, userObj.followers, userObj.following, userObj.accountType, result.message)
     });
     // console.log(input.value)
+    input.value = " "
 });
 
 
 function createCart(name, imgUrl, username, bio, profileUrl, publicRepos, followers, following, accountType, message) {
-    // console.log(name)
+
+    
+    
     const div1 = document.createElement("div");
     div1.className = "bg-gray-500 w-[95%] md:w-[28%] md:px-4 rounded-2xl flex flex-col items-center mt-2 justify-center";
 
@@ -28,7 +51,7 @@ function createCart(name, imgUrl, username, bio, profileUrl, publicRepos, follow
     div2.className = "flex flex-col items-center justify-center pt-4"
 
     const div3 = document.createElement("div")
-    div3.className = "w-32 h-32 rounded-full bg-amber-500 overflow-hidden shadow-lg border-4 border-white"
+    div3.className = "w-32 h-32 rounded-full bg-gray-500 overflow-hidden shadow-lg border-4 border-white"
 
     const img = document.createElement("img")
     img.className = " w-full h-full object-cover"
@@ -61,8 +84,7 @@ function createCart(name, imgUrl, username, bio, profileUrl, publicRepos, follow
     button.innerHTML = `
     <a href= ${profileUrl} target="_blank">
         <i class="ri-external-link-line"></i> github.com/${username}
-    </a>
-`;
+    </a>`;
 
     // details div
     const detailsDiv = document.createElement("div")
@@ -86,19 +108,19 @@ function createCart(name, imgUrl, username, bio, profileUrl, publicRepos, follow
     typeDiv.className = "flex w-[90%] items-center justify-center m-2"
 
     const typeborder = document.createElement("div")
-    typeborder.className = "h-[2px] w-[70%] m-2 bg-gray-800"
+    typeborder.className = "h-[2px] w-[25%] m-2 bg-gray-800"
 
     const typeborder2 = document.createElement("div")
-    typeborder2.className = "h-[2px] w-[70%] m-2 bg-gray-800"
+    typeborder2.className = "h-[2px] w-[25%] m-2 bg-gray-800"
 
     const typediv = document.createElement("div")
-    typediv.className = "bg-green-500 m-1 text-black rounded-[0.5rem] p-2 px-2 flex gap-2 items-center justify-center"
-    typediv.innerHTML = ` <p class=" text-center md:text-left">${accountType}</p>`
+    typediv.className = "bg-green-500 m-1 w-[50%]  h-[4rem] text-black rounded-[0.5rem] p-2 px-2 flex gap-2 items-center justify-center"
+    typediv.innerHTML = ` <p class=" text-center lg:text-xl">${accountType}</p>`
 
     // success
     const cartP = document.createElement("p")
-    cartP.className = "p-4 font-bold text-green-500"
-    cartP.innerText = `Profile for ${message} fetched succesfully.`
+    cartP.className = "p-4 font-bold text-green-500 text-center"
+    cartP.innerHTML = `Profile for <span class="text-xl text-gray-300"> ${message}</span> fetched successfully`
 
 
 
@@ -169,7 +191,7 @@ async function getGitHubProfile(username) {
         return {
             success: true,
             profile: formattedData,
-            message: `Profile for ${receivedData.name} fetched successfully`
+            message: `${username}`
         };
 
     } catch (error) {
@@ -183,4 +205,5 @@ async function getGitHubProfile(username) {
 
 
 
-// getGitHubProfile(username).then(result => console.log(result));
+// getGitHubProfile("s2fdsaf5asd4f").then(result => console.log(result));
+
