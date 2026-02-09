@@ -27,29 +27,33 @@ suggestBtns.forEach((btn) => {
 })
 
 search.addEventListener("click", function () {
-    let username = input.value;
+    let username = input.value.trim();
     console.log(username)
+
+    search.innerText = "Loading..."
     getGitHubProfile(username).then(result => {
-        
+
         const userObj = result.profile;
         // console.log(result.success)
         if (result.success) {
             createCart(userObj.name, userObj.avatar, userObj.username, userObj.bio, userObj.profileUrl, userObj.publicRepos, userObj.followers, userObj.following, userObj.accountType, result.message)
             errorBord.className = "hidden"
+            search.innerText = "Seach"
         } else {
             errorBord.className = "block"
             cartContainer.innerHTML = "";
+            search.innerText = "Seach again"
         }
     });
     // console.log(input.value)
-    input.value = " "
+    input.value = ""
 });
 
 
 function createCart(name, imgUrl, username, bio, profileUrl, publicRepos, followers, following, accountType, message) {
 
-     cartContainer.innerHTML = "";
-    
+    cartContainer.innerHTML = "";
+
     const div1 = document.createElement("div");
     div1.className = "bg-gray-500 w-[95%] md:w-[28%] md:px-4 rounded-2xl flex flex-col items-center mt-2 justify-center";
 
