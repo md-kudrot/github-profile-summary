@@ -6,15 +6,21 @@ A modern, responsive web application that fetches and displays GitHub user profi
 
 ## 🌟 Live Demo
 
-[View Live Project](#) <!-- Add your live link here -->
+[View Live Project](https://md-kudrot.github.io/github-profile-summary/src/) <!-- Add your live link here -->
 
 ## 📸 Screenshots
 
 ### Mobile View
-<!-- Add mobile screenshot here -->
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/md-kudrot/github-profile-summary/refs/heads/main/src/assets/mobile%20full.png" alt="Mobile Full View" width="300"/>
+</p>
 
 ### Desktop View
-<!-- Add desktop screenshot here -->
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/md-kudrot/github-profile-summary/refs/heads/main/src/assets/pc.png" alt="Desktop View" width="800"/>
+</p>
 
 ## ✨ Features
 
@@ -29,11 +35,10 @@ A modern, responsive web application that fetches and displays GitHub user profi
 ## 🛠️ Built With
 
 - **HTML5** - Semantic markup
-- **CSS3** - Custom styling with Flexbox & Grid
 - **Tailwind CSS** - Utility-first styling
 - **JavaScript (ES6+)** - Core functionality
 - **GitHub REST API** - Data fetching
-- **Responsive Design** - Mobile → Tablet → Desktop
+- **Responsive Design** - Mobile → Desktop
 
 ## 🚀 Getting Started
 
@@ -106,19 +111,9 @@ https://api.github.com/users/{username}
 ## 🐛 Error Handling
 
 - **User not found** - Displays friendly error message
-- **Network issues** - Shows connection error
 - **Empty input** - Validates before searching
-- **API rate limits** - Informs user gracefully
 
-## 🎨 Color Palette
 
-| Color          | Hex Code  | Usage              |
-|----------------|-----------|-------------------|
-| Primary Black  | `#181717` | Text, Headers     |
-| GitHub Green   | `#238636` | Buttons, Accents  |
-| Light Gray     | `#f6f8fa` | Backgrounds       |
-| Border Gray    | `#d0d7de` | Borders, Dividers |
-| Muted Text     | `#656d76` | Secondary text    |
 
 ## 📱 Responsive Breakpoints
 
@@ -145,9 +140,6 @@ Contributions are welcome! Feel free to:
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 👨‍💻 Author
 
@@ -157,12 +149,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## 🏷️ Portfolio Caption
-
-> **GitHub Profile Summary App**  
-> Frontend project using JavaScript & GitHub API to fetch and visualize user profiles with responsive UI for mobile and desktop.
-
----
 
 ### 🔑 Keywords
 
