@@ -1,7 +1,4 @@
 // UI
-
-console.log("JS file loaded!");
-
 const input = document.getElementById("input");
 const search = document.getElementById("search");
 const cartContainer = document.getElementById("cartContainer")
@@ -28,9 +25,16 @@ suggestBtns.forEach((btn) => {
 
 search.addEventListener("click", function () {
     let username = input.value.trim();
-    console.log(username)
+    // console.log(username)
+
+    
+    if (username === "") {
+        errorBord.className = "block"
+        return;
+    }
 
     search.innerText = "Loading..."
+
     getGitHubProfile(username).then(result => {
 
         const userObj = result.profile;
@@ -38,11 +42,11 @@ search.addEventListener("click", function () {
         if (result.success) {
             createCart(userObj.name, userObj.avatar, userObj.username, userObj.bio, userObj.profileUrl, userObj.publicRepos, userObj.followers, userObj.following, userObj.accountType, result.message)
             errorBord.className = "hidden"
-            search.innerText = "Seach"
+            search.innerText = "Search"
         } else {
             errorBord.className = "block"
             cartContainer.innerHTML = "";
-            search.innerText = "Seach again"
+            search.innerText = "Search again"
         }
     });
     // console.log(input.value)
@@ -161,7 +165,6 @@ async function fetchGitHubUser(username) {
 
     } catch (error) {
         console.log("Error:", error.message);
-
     }
 }
 
@@ -171,7 +174,7 @@ function getAccountType(followers) {
     if (followers >= 10000) return "⭐ Famous: 10k+ followers";
     if (followers >= 1000) return "🌟 Popular: 1k+ followers";
     if (followers >= 100) return "📈 Growing: 100+ followers";
-    return "🌱 Starter"; // ✅ Fixed: Simplified default case
+    return "🌱 Starter"; 
 }
 
 // Format the raw API data
